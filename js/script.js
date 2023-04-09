@@ -23,6 +23,14 @@ window.addEventListener('load', ()=>{
     let tomX = 0
     let tomY = canvas.height / 2
 
+    //movement variables
+    let moveUp = false
+    let moveDown = false
+
+    //requestAnimationFrame
+    let forLaterCancel = null
+
+
     //logic and functions
     function startGame () {
         canvas.style.display = 'block'
@@ -33,11 +41,25 @@ window.addEventListener('load', ()=>{
         //to check canvas
         //canvas.style.backgroundColor = 'red'
         drawTomatoPlant()
+        tomatoMove()
     }
 
     function drawTomatoPlant () {
         ctx.drawImage(tomatoPlant, tomX, tomY, tomWidth, tomHeight)
-    
+    }
+
+    function tomatoMove () {
+        if (moveUp && tomY > 0) {
+            tomY -= 5;
+        }
+        if (moveDown && tomY < canvas.height - tomHeight ) {
+            tomY += 5;
+        }
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height)
+        drawTomatoPlant()
+        forLaterCancel = requestAnimationFrame(tomatoMove)
+
     }
 
     //event listeners
@@ -45,6 +67,25 @@ window.addEventListener('load', ()=>{
         startGame()
     })
 
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'w'||event.key === 'W'||event.key === 'ArrowUp') {
+            moveUp = true 
+        }
+        if (event.key === 's'||event.key === 'S'||event.key === 'ArrowDown') {
+            moveDown = true 
+        }
+      })
+    
+    document.addEventListener('keyup', (event) => {
+        if (event.key === 'w'||event.key === 'W'||event.key === 'ArrowUp') {
+            moveUp= false 
+        }
+        if (event.key === 's'||event.key === 'S'||event.key === 'ArrowDown') {
+            moveDown = false 
+        }
+      })
+
     
 
 })
+
