@@ -1,6 +1,5 @@
 window.addEventListener('load', ()=>{
 
-   
     //canvas target and context
     const canvas = document.querySelector('#canvas');
     const ctx = canvas.getContext('2d');
@@ -21,10 +20,6 @@ window.addEventListener('load', ()=>{
     //game over target
     const gameOverSplash = document.querySelector('#game-over')
     gameOverSplash.style.display = 'none'
-
-    //restartButton target
-    
-    
 
     //images
     const backgroundImage = new Image()
@@ -140,16 +135,12 @@ window.addEventListener('load', ()=>{
             isGameOver = true
             console.log("collision")
          }
-        }  
-    
-
-
+    }  
 
     //logic and functions
     function startGame () {
         canvas.style.display = 'block'
         intro.style.display = 'none'
-       
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         anime();
@@ -158,8 +149,6 @@ window.addEventListener('load', ()=>{
     function anime () {
         ctx.clearRect(0, 0, canvas.width, canvas.height)
         ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height)
-        //to check canvas
-        //canvas.style.backgroundColor = 'red'
         drawTomatoPlant()
         drawScissor1()
         scissor1Move()
@@ -179,6 +168,7 @@ window.addEventListener('load', ()=>{
         }
     }
     
+    //all draws
     function drawTomatoPlant () {
         ctx.drawImage(tomatoPlant, tomX, tomY, tomWidth, tomHeight)
     }
@@ -200,8 +190,6 @@ window.addEventListener('load', ()=>{
     }
     
 
-
-
     function tomatoMove () {
         if (moveUp && tomY > 0) {
             tomY -= 5;
@@ -209,7 +197,6 @@ window.addEventListener('load', ()=>{
         if (moveDown && tomY < canvas.height - tomHeight) {
             tomY += 5;
         }
-       console.log("hello")
     }
 
     function scissor1Move () {
@@ -273,6 +260,8 @@ window.addEventListener('load', ()=>{
             moveDown = false 
         }
       })
+
+
     //game over
     function gameOver () {
         canvas.style.display = 'none'
