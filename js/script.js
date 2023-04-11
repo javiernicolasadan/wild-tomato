@@ -8,12 +8,23 @@ window.addEventListener('load', ()=>{
     /* canvas.width = window.innerWidth;
     canvas.height = window.innerHeight; */
 
-    //startButton target
+    //start and restart Buttons target
     const startButton = document.querySelector('#start-button');
+    const restartButton = document.querySelector('#restart-button')
+
+    //start without canvas
     canvas.style.display = 'none'
 
     //intro target
     const intro = document.querySelector('.game-intro')
+
+    //game over target
+    const gameOverSplash = document.querySelector('#game-over')
+    gameOverSplash.style.display = 'none'
+
+    //restartButton target
+    
+    
 
     //images
     const backgroundImage = new Image()
@@ -78,7 +89,7 @@ window.addEventListener('load', ()=>{
     let forLaterCancel = null
 
     //game over 
-    let gameOver = false 
+    let isGameOver = false 
     
     //scissors array
     /* let scissorsArr = []
@@ -126,6 +137,7 @@ window.addEventListener('load', ()=>{
             scissor3X < tomX + tomWidth && scissor3X + scissor3Width > tomX) ||
            (scissor4Y < tomY + tomHeight && scissor4Y + scissor4Height > tomY && 
             scissor4X < tomX + tomWidth && scissor4X + scissor4Width > tomX)) {
+            isGameOver = true
             console.log("collision")
          }
         }  
@@ -137,10 +149,10 @@ window.addEventListener('load', ()=>{
     function startGame () {
         canvas.style.display = 'block'
         intro.style.display = 'none'
+       
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         anime();
-        
     }
 
     function anime () {
@@ -159,8 +171,9 @@ window.addEventListener('load', ()=>{
         scissor4Move()
         checkCollision()
         tomatoMove()
-            if (gameOver) {
+            if (isGameOver) {
                 cancelAnimationFrame(forLaterCancel)
+                gameOver()
             } else {
                 forLaterCancel = requestAnimationFrame(anime)
         }
@@ -222,13 +235,24 @@ window.addEventListener('load', ()=>{
             scissor4X -= scissor4Speed;
         } else {scissor4X = 2400 }
     }
-  
+
+    /* function score () {}
+   */
    
 
 
 
     //event listeners
     startButton.addEventListener('click', () => {
+        startGame()
+    })
+
+    restartButton.addEventListener('click', () => {
+        isGameOver = false
+        scissor1X = 2800
+        scissor2X = 2800
+        scissor3X = 2800
+        scissor4X = 2800
         startGame()
     })
 
@@ -249,6 +273,13 @@ window.addEventListener('load', ()=>{
             moveDown = false 
         }
       })
+    //game over
+    function gameOver () {
+        canvas.style.display = 'none'
+        gameOverSplash.style.display = 'flex'
+        
+    }  
+   
     
 
 })
