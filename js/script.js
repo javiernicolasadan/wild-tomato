@@ -116,7 +116,20 @@ window.addEventListener('load', ()=>{
     }
  */
    
- 
+    //check collision
+    function checkCollision () {
+        if ((scissor1Y < tomY + tomHeight && scissor1Y + scissor1Height > tomY && 
+            scissor1X < tomX + tomWidth && scissor1X + scissor1Width > tomX) ||
+           (scissor2Y < tomY + tomHeight && scissor2Y + scissor2Height > tomY && 
+            scissor2X < tomX + tomWidth && scissor2X + scissor2Width > tomX) ||
+           (scissor3Y < tomY + tomHeight && scissor3Y + scissor3Height > tomY && 
+            scissor3X < tomX + tomWidth && scissor3X + scissor3Width > tomX) ||
+           (scissor4Y < tomY + tomHeight && scissor4Y + scissor4Height > tomY && 
+            scissor4X < tomX + tomWidth && scissor4X + scissor4Width > tomX)) {
+            console.log("collision")
+         }
+        }  
+    
 
 
 
@@ -144,6 +157,7 @@ window.addEventListener('load', ()=>{
         scissor3Move()
         drawScissor4()
         scissor4Move()
+        checkCollision()
         tomatoMove()
             if (gameOver) {
                 cancelAnimationFrame(forLaterCancel)
