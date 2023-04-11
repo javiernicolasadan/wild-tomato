@@ -1,7 +1,12 @@
 window.addEventListener('load', ()=>{
+
+   
     //canvas target and context
     const canvas = document.querySelector('#canvas');
     const ctx = canvas.getContext('2d');
+
+    /* canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight; */
 
     //startButton target
     const startButton = document.querySelector('#start-button');
@@ -12,16 +17,58 @@ window.addEventListener('load', ()=>{
 
     //images
     const backgroundImage = new Image()
-    backgroundImage.src = './images/canvas-background.webp'
+    backgroundImage.src = './images/canvas-background-retocada.png'
 
     const tomatoPlant = new Image()
     tomatoPlant.src = './images/buena-recortada.png'
+
+    const scissor1 = new Image()
+    scissor1.src = './images/scissor2-buena2.png'
+
+    const scissor2 = new Image()
+    scissor2.src = './images/scissor2-buena2.png'
+
+    const scissor3 = new Image()
+    scissor3.src = './images/scissor2-buena2.png'
+
+    const scissor4 = new Image()
+    scissor4.src = './images/scissor2-buena2'
+
 
     //tomato plant variables
     const tomWidth = 150
     const tomHeight = 200
     let tomX = 0
     let tomY = canvas.height / 2
+
+    //scissor 1 variables
+    const scissor1Width = 100
+    const scissor1Height = 150
+    let scissor1X = 2800
+    let scissor1Y = 500
+    let scissor1Speed = 25
+
+    //scissor 2 variables
+    const scissor2Width = 100
+    const scissor2Height = 150
+    let scissor2X = 2800
+    let scissor2Y = 600
+    let scissor2Speed = 30
+
+    //scissor 3 variables
+    const scissor3Width = 100
+    const scissor3Height = 150
+    let scissor3X = 2800
+    let scissor3Y = 200
+    let scissor3Speed = 27
+
+    //scissor 4 variables
+    const scissor4Width = 100
+    const scissor4Height = 150
+    let scissor4X = 2800
+    let scissor4Y = 300
+    let scissor4Speed = 22
+
 
     //movement variables
     let moveUp = false
@@ -30,6 +77,48 @@ window.addEventListener('load', ()=>{
     //requestAnimationFrame
     let forLaterCancel = null
 
+    //game over 
+    let gameOver = false 
+    
+    //scissors array
+    /* let scissorsArr = []
+
+    function createScissors() {
+        const newScissors = new scissorsObs(this.width, this.height, this.x, this.y)
+        scissorsArr.push(newScissors)
+    }
+
+    function an
+
+    //class Scissors
+    class scissorsObs {
+        constructor(width, height, x, y) {
+            this.width = 150
+            this.height = 120
+            this.x = 1200 - this.width
+            this.y = Math.random()*(canvas.height-this.height)
+            
+        }
+
+        drawScissors() {
+            ctx.drawImage(scissors, this.x, this.y, this.width, this.height)
+        }
+
+        move() {
+            this.x -= 15
+        }
+        
+        checkCollision() {
+            if (tomY < this.y + this.height && tomHeight + tomY > this.y 
+                && tomX < this.x + this.width && tomWidth + tomX > this.x) 
+            {gameOver = true}
+        }
+    }
+ */
+   
+ 
+
+
 
     //logic and functions
     function startGame () {
@@ -37,30 +126,92 @@ window.addEventListener('load', ()=>{
         intro.style.display = 'none'
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
+        anime();
+        
+    }
+
+    function anime () {
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
         ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height)
         //to check canvas
         //canvas.style.backgroundColor = 'red'
         drawTomatoPlant()
+        drawScissor1()
+        scissor1Move()
+        drawScissor2()
+        scissor2Move()
+        drawScissor3()
+        scissor3Move()
+        drawScissor4()
+        scissor4Move()
         tomatoMove()
+            if (gameOver) {
+                cancelAnimationFrame(forLaterCancel)
+            } else {
+                forLaterCancel = requestAnimationFrame(anime)
+        }
     }
-
+    
     function drawTomatoPlant () {
         ctx.drawImage(tomatoPlant, tomX, tomY, tomWidth, tomHeight)
     }
+
+    function drawScissor1 () {
+        ctx.drawImage(scissor1, scissor1X, scissor1Y, scissor1Width, scissor1Height)
+    }
+
+    function drawScissor2 () {
+        ctx.drawImage(scissor2, scissor2X, scissor2Y, scissor2Width, scissor2Height)
+    }
+
+    function drawScissor3 () {
+        ctx.drawImage(scissor3, scissor3X, scissor3Y, scissor3Width, scissor3Height)
+    }
+
+    function drawScissor4 () {
+        ctx.drawImage(scissor4, scissor4X, scissor4Y, scissor4Width, scissor4Height)
+    }
+    
+
+
 
     function tomatoMove () {
         if (moveUp && tomY > 0) {
             tomY -= 5;
         }
-        if (moveDown && tomY < canvas.height - tomHeight ) {
+        if (moveDown && tomY < canvas.height - tomHeight) {
             tomY += 5;
         }
-        ctx.clearRect(0, 0, canvas.width, canvas.height)
-        ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height)
-        drawTomatoPlant()
-        forLaterCancel = requestAnimationFrame(tomatoMove)
-
+       console.log("hello")
     }
+
+    function scissor1Move () {
+        if (scissor1X > 0) {
+            scissor1X -= scissor1Speed;
+        } else {scissor1X = 2400 }
+    }
+
+    function scissor2Move () {
+        if (scissor2X > 0) {
+            scissor2X -= scissor2Speed;
+        } else {scissor2X = 2400 }
+    }
+
+    function scissor3Move () {
+        if (scissor3X > 0) {
+            scissor3X -= scissor3Speed;
+        } else {scissor3X = 2400 }
+    }
+
+    function scissor4Move () {
+        if (scissor4X > 0) {
+            scissor4X -= scissor4Speed;
+        } else {scissor4X = 2400 }
+    }
+  
+   
+
+
 
     //event listeners
     startButton.addEventListener('click', () => {
@@ -84,8 +235,9 @@ window.addEventListener('load', ()=>{
             moveDown = false 
         }
       })
-
     
 
 })
+        
+     
 
