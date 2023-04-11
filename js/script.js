@@ -32,7 +32,7 @@ window.addEventListener('load', ()=>{
     scissor3.src = './images/scissor2-buena2.png'
 
     const scissor4 = new Image()
-    scissor4.src = './images/scissor2-buena2'
+    scissor4.src = './images/scissor2-buena2.png'
 
 
     //tomato plant variables
