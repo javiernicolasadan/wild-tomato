@@ -33,6 +33,7 @@
     transition: background-color 0.3s ease;
 }
 
+
 #text-buttons {
     display: flex;
     flex-direction: column;
@@ -83,5 +84,18 @@ p {
     background-position: center;
     min-height: 100vh;
 }
+
+#your-score {
+    background-color: #4CAF50;
+    color: antiquewhite;
+    border: 2px solid #4CAF50;
+    border-radius: 50px;
+    font-size: 40px;
+    padding: 10px 20px; 
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+
 
 

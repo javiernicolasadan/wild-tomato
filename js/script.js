@@ -18,6 +18,11 @@ window.addEventListener('load', ()=>{
     const gameOverSplash = document.querySelector('#game-over')
     gameOverSplash.style.display = 'none'
 
+    //score
+    let score = 0
+
+  
+
     //images
     const backgroundImage = new Image()
     backgroundImage.src = './images/canvas-background-retocada.png'
@@ -80,12 +85,11 @@ window.addEventListener('load', ()=>{
     //requestAnimationFrame
     let forLaterCancel = null
 
-    //score
-    let score = 0
+   
 
     //game over 
     let isGameOver = false 
-    
+
     //scissors array
     /* let scissorsArr = []
 
@@ -195,6 +199,7 @@ window.addEventListener('load', ()=>{
         ctx.font = "bold 80px serif"
         ctx.closePath()
     }
+   
     
 
     function tomatoMove () {
@@ -280,11 +285,9 @@ window.addEventListener('load', ()=>{
     function gameOver () {
         canvas.style.display = 'none'
         gameOverSplash.style.display = 'flex'
-        
+        document.querySelector('#your-score').innerText = `Your score: ${score}`
+      
     }  
-   
-    
-
 })
         
      
