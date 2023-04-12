@@ -4,9 +4,6 @@ window.addEventListener('load', ()=>{
     const canvas = document.querySelector('#canvas');
     const ctx = canvas.getContext('2d');
 
-    /* canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight; */
-
     //start and restart Buttons target
     const startButton = document.querySelector('#start-button');
     const restartButton = document.querySelector('#restart-button')
@@ -84,7 +81,7 @@ window.addEventListener('load', ()=>{
     let forLaterCancel = null
 
     //score
-    /* let score = 0 */
+    let score = 0
 
     //game over 
     let isGameOver = false 
@@ -146,8 +143,11 @@ window.addEventListener('load', ()=>{
         intro.style.display = 'none'
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-
+        score = 0
+        scoreCount()
         anime();
+        
+        
     }
 
     function anime () {
@@ -163,6 +163,8 @@ window.addEventListener('load', ()=>{
         drawScissor4()
         scissor4Move()
         checkCollision()
+        drawScore()
+        
         tomatoMove()
             if (isGameOver) {
                 cancelAnimationFrame(forLaterCancel)
@@ -188,6 +190,13 @@ window.addEventListener('load', ()=>{
     function drawScissor4 () {
         ctx.drawImage(scissor4, scissor4X, scissor4Y, scissor4Width, scissor4Height)
     }
+    function drawScore () {
+        ctx.beginPath()
+        ctx.fillStyle ="black"
+        ctx.fillText(`SCORE: ${score}`, canvas.width/2, 80)
+        ctx.font = "bold 80px serif"
+        ctx.closePath()
+    }
     
 
     function tomatoMove () {
@@ -198,41 +207,32 @@ window.addEventListener('load', ()=>{
             tomY += 5;
         }
     }
-
     function scissor1Move () {
         if (scissor1X > 0) {
             scissor1X -= scissor1Speed;
         } else {scissor1X = 2400 }
     }
-
     function scissor2Move () {
         if (scissor2X > 0) {
             scissor2X -= scissor2Speed;
         } else {scissor2X = 2400 }
     }
-
     function scissor3Move () {
         if (scissor3X > 0) {
             scissor3X -= scissor3Speed;
         } else {scissor3X = 2400 }
     }
-
     function scissor4Move () {
         if (scissor4X > 0) {
             scissor4X -= scissor4Speed;
         } else {scissor4X = 2400 }
     }
 
-    /* function scoreCount 
-    setTimeout(() => {
+    function scoreCount  () {
+    setInterval(() => {
         score++
-    }1000)
-
-
-   */
-   
-
-
+    } ,1000)
+    }
 
     //event listeners
     startButton.addEventListener('click', () => {
