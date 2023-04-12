@@ -145,9 +145,8 @@ window.addEventListener('load', ()=>{
         canvas.height = window.innerHeight;
         score = 0
         scoreCount()
+        moreSpeed()
         anime();
-        
-        
     }
 
     function anime () {
@@ -164,7 +163,6 @@ window.addEventListener('load', ()=>{
         scissor4Move()
         checkCollision()
         drawScore()
-        
         tomatoMove()
             if (isGameOver) {
                 cancelAnimationFrame(forLaterCancel)
@@ -232,6 +230,15 @@ window.addEventListener('load', ()=>{
     setInterval(() => {
         score++
     } ,1000)
+    }
+
+    function moreSpeed () {
+    setInterval(() => {
+        scissor1Speed += 1
+        scissor2Speed += 1
+        scissor3Speed += 1
+        scissor4Speed += 1
+    } ,5000)
     }
 
     //event listeners
