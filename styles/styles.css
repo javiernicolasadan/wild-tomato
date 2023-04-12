@@ -1,38 +1,26 @@
+
+/* game intro */
 .game-intro {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    background-image: url("/images/fondo-startgame.png");
-    background-size: cover;
-    background-position: center;
-}
-
-
-
-#start-button {
-    background-color: #4CAF50;
-    color: antiquewhite;
-    border: 2px solid #4CAF50;
-    border-radius: 50px;
-    font-size: 40px;
-    padding: 10px 20px; 
-    transition: background-color 0.3s ease;
-}
-
-p {
-    font-size: 50px;
-}
-
-#game-over {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: stretch;
-    background-image: url("/images/game-over.png");
+    background-image: url("../images/fondo-startgame.png");
     background-size: cover;
     background-position: center;
     min-height: 100vh;
+    
+}
+
+/* buttons */
+#start-button {
+    background-color: #4CAF50;
+    color: antiquewhite;
+    border: 5px solid black;
+    border-radius: 50px;
+    font-size: 40px;
+    transition: background-color 0.3s ease;
+    width: 200px;
 }
 
 #restart-button {
@@ -43,5 +31,57 @@ p {
     font-size: 40px;
     padding: 10px 20px; 
     transition: background-color 0.3s ease;
-
 }
+
+#text-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+p {
+    background-color: #4CAF50;
+    border: 5px solid black;
+    border-radius: 50px;
+    font-size: 40px;
+    color: black;
+}
+
+/* images */
+#monterrey {
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.intro-img {
+    height: 300px;
+}
+
+/* letters */
+#tomato-letters {
+    display: flex;
+    align-items: center;
+    background-color: #4CAF50;
+    color: antiquewhite;
+    border: 5px solid black;
+    border-radius: 50px;
+    font-size: 40px;
+    transition: background-color 0.3s ease;
+    height: 150px;   
+}
+
+/* game over */
+#game-over {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: stretch;
+    background-image: url("../images/game-over.png");
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+}
+
+

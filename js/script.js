@@ -26,24 +26,24 @@ window.addEventListener('load', ()=>{
     backgroundImage.src = './images/canvas-background-retocada.png'
 
     const tomatoPlant = new Image()
-    tomatoPlant.src = './images/buena-recortada.png'
+    tomatoPlant.src = './images/buena-recortada2.png'
 
     const scissor1 = new Image()
-    scissor1.src = './images/scissor2-buena2.png'
+    scissor1.src = './images/scissor-recortada2.png'
 
     const scissor2 = new Image()
-    scissor2.src = './images/scissor2-buena2.png'
+    scissor2.src = './images/scissor-recortada2.png'
 
     const scissor3 = new Image()
-    scissor3.src = './images/scissor2-buena2.png'
+    scissor3.src = './images/scissor-recortada2.png'
 
     const scissor4 = new Image()
-    scissor4.src = './images/scissor2-buena2.png'
+    scissor4.src = './images/scissor-recortada2.png'
 
 
     //tomato plant variables
-    const tomWidth = 150
-    const tomHeight = 200
+    const tomWidth = 100
+    const tomHeight = 150
     let tomX = 0
     let tomY = canvas.height / 2
 
@@ -51,29 +51,29 @@ window.addEventListener('load', ()=>{
     const scissor1Width = 100
     const scissor1Height = 150
     let scissor1X = 2800
-    let scissor1Y = 500
-    let scissor1Speed = 25
+    let scissor1Y = 200
+    let scissor1Speed = 15
 
     //scissor 2 variables
     const scissor2Width = 100
     const scissor2Height = 150
     let scissor2X = 2800
-    let scissor2Y = 600
-    let scissor2Speed = 30
+    let scissor2Y = 300
+    let scissor2Speed = 16
 
     //scissor 3 variables
     const scissor3Width = 100
     const scissor3Height = 150
     let scissor3X = 2800
-    let scissor3Y = 200
-    let scissor3Speed = 27
+    let scissor3Y = 500
+    let scissor3Speed = 13
 
     //scissor 4 variables
     const scissor4Width = 100
     const scissor4Height = 150
     let scissor4X = 2800
-    let scissor4Y = 300
-    let scissor4Speed = 22
+    let scissor4Y = 600
+    let scissor4Speed = 12
 
 
     //movement variables
@@ -143,6 +143,7 @@ window.addEventListener('load', ()=>{
         intro.style.display = 'none'
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
+        
         anime();
     }
 
@@ -223,7 +224,12 @@ window.addEventListener('load', ()=>{
         } else {scissor4X = 2400 }
     }
 
-    /* function score () {}
+    /* function score 
+    setTimeout(() => {
+        score++
+    })
+
+
    */
    
 
@@ -240,7 +246,9 @@ window.addEventListener('load', ()=>{
         scissor2X = 2800
         scissor3X = 2800
         scissor4X = 2800
+        gameOverSplash.style.display = 'none'
         startGame()
+        console.log("hola")
     })
 
     document.addEventListener('keydown', (event) => {
