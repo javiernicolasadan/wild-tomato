@@ -88,44 +88,67 @@ window.addEventListener('load', ()=>{
     //game over 
     let isGameOver = false 
 
-    //scissors array
-    /* let scissorsArr = []
-
-    function createScissors() {
-        const newScissors = new scissorsObs(this.width, this.height, this.x, this.y)
-        scissorsArr.push(newScissors)
-    }
-
-    function an
+    
+    
 
     //class Scissors
-    class scissorsObs {
-        constructor(width, height, x, y) {
+    class Scissors {
+        constructor(x, y, speed) {
             this.width = 150
             this.height = 120
-            this.x = 1200 - this.width
-            this.y = Math.random()*(canvas.height-this.height)
-            
+            this.x = x
+            this.y = y
+            this.speed = speed
+            this.image = scissor1
         }
 
         drawScissors() {
-            ctx.drawImage(scissors, this.x, this.y, this.width, this.height)
+            ctx.drawImage(this.image, this.x, this.y, this.width, this.height)
         }
 
         move() {
-            this.x -= 15
+            this.x -= this.speed
         }
         
-        checkCollision() {
-            if (tomY < this.y + this.height && tomHeight + tomY > this.y 
-                && tomX < this.x + this.width && tomWidth + tomX > this.x) 
-            {gameOver = true}
+        checkCollision(tomX, tomY, tomWidth, tomHeight) {
+            if (tomY < this.y + this.height && 
+                tomHeight + tomY > this.y &&
+                tomX < this.x + this.width &&
+                tomWidth + tomX > this.x) 
+            {isGameOver = true}
         }
     }
- */
+
+    const scissors1 = new Scissors(
+        2800,
+        130,
+        15,
+    );
+
+    const scissors2 = new Scissors(
+        2800,
+        300,
+        16,
+    );
+
+    const scissors3 = new Scissors(
+        2800,
+        500,
+        13,
+    );
+
+    const scissors4 = new Scissors(
+        2800,
+        700,
+        12,
+    );
+    let scissorsArr = [scissors1, scissors2, scissors3, scissors4]
+    
+ 
+   
    
     //check collision
-    function checkCollision () {
+    /* function checkCollision () {
         if ((scissor1Y < tomY + tomHeight && scissor1Y + scissor1Height > tomY && 
             scissor1X < tomX + tomWidth && scissor1X + scissor1Width > tomX) ||
            (scissor2Y < tomY + tomHeight && scissor2Y + scissor2Height > tomY && 
@@ -137,7 +160,7 @@ window.addEventListener('load', ()=>{
             isGameOver = true
             console.log("collision")
          }
-    }  
+    }   */
 
     //logic and functions
     function startGame () {
@@ -155,15 +178,23 @@ window.addEventListener('load', ()=>{
         ctx.clearRect(0, 0, canvas.width, canvas.height)
         ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height)
         drawTomatoPlant()
-        drawScissor1()
-        scissor1Move()
-        drawScissor2()
-        scissor2Move()
-        drawScissor3()
-        scissor3Move()
-        drawScissor4()
-        scissor4Move()
-        checkCollision()
+        scissorsArr.forEach(scissors => {
+            scissors.drawScissors()
+            console.log(scissors)
+            scissors.move()
+            scissors.checkCollision(tomX, tomY, tomWidth, tomHeight)
+            
+        });
+
+        /* drawScissor1() */
+        /* scissor1Move() */
+        /* drawScissor2() */
+        /* scissor2Move() */
+        /* drawScissor3() */
+        /* scissor3Move() */
+        /* drawScissor4() */
+        /* scissor4Move() */
+        /* checkCollision() */
         drawScore()
         tomatoMove()
             if (isGameOver) {
@@ -175,9 +206,10 @@ window.addEventListener('load', ()=>{
     }
     
     //all draws
-    function drawTomatoPlant () {
+     function drawTomatoPlant () {
         ctx.drawImage(tomatoPlant, tomX, tomY, tomWidth, tomHeight)
     }
+    /*
     function drawScissor1 () {
         ctx.drawImage(scissor1, scissor1X, scissor1Y, scissor1Width, scissor1Height)
     }
@@ -189,7 +221,7 @@ window.addEventListener('load', ()=>{
     }
     function drawScissor4 () {
         ctx.drawImage(scissor4, scissor4X, scissor4Y, scissor4Width, scissor4Height)
-    }
+    } */
     function drawScore () {
         ctx.beginPath()
         ctx.fillStyle ="black"
@@ -208,7 +240,7 @@ window.addEventListener('load', ()=>{
             tomY += 5;
         }
     }
-    function scissor1Move () {
+    /* function scissor1Move () {
         if (scissor1X > 0) {
             scissor1X -= scissor1Speed;
         } else {scissor1X = 2400 }
@@ -227,7 +259,7 @@ window.addEventListener('load', ()=>{
         if (scissor4X > 0) {
             scissor4X -= scissor4Speed;
         } else {scissor4X = 2400 }
-    }
+    } */
 
     function scoreCount  () {
     setInterval(() => {
@@ -251,10 +283,9 @@ window.addEventListener('load', ()=>{
 
     restartButton.addEventListener('click', () => {
         isGameOver = false
-        scissor1X = 2800
-        scissor2X = 2800
-        scissor3X = 2800
-        scissor4X = 2800
+        scissorsArr.forEach(scissors => {
+            scissors.x = 2700
+        })
         gameOverSplash.style.display = 'none'
         startGame()
         console.log("hola")
@@ -283,8 +314,7 @@ window.addEventListener('load', ()=>{
     function gameOver () {
         canvas.style.display = 'none'
         gameOverSplash.style.display = 'flex'
-        document.querySelector('#your-score').innerText = `Your score: ${score}`
-      
+        document.querySelector('#your-score').innerText = `YOUR SCORE: ${score}`
     }  
 })
         
