@@ -51,7 +51,7 @@ window.addEventListener('load', ()=>{
     const scissor1Width = 100
     const scissor1Height = 150
     let scissor1X = 2800
-    let scissor1Y = 200
+    let scissor1Y = 130
     let scissor1Speed = 15
 
     //scissor 2 variables
@@ -72,7 +72,7 @@ window.addEventListener('load', ()=>{
     const scissor4Width = 100
     const scissor4Height = 150
     let scissor4X = 2800
-    let scissor4Y = 600
+    let scissor4Y = 700
     let scissor4Speed = 12
 
 
@@ -82,6 +82,9 @@ window.addEventListener('load', ()=>{
 
     //requestAnimationFrame
     let forLaterCancel = null
+
+    //score
+    /* let score = 0 */
 
     //game over 
     let isGameOver = false 
@@ -143,7 +146,7 @@ window.addEventListener('load', ()=>{
         intro.style.display = 'none'
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        
+
         anime();
     }
 
@@ -173,19 +176,15 @@ window.addEventListener('load', ()=>{
     function drawTomatoPlant () {
         ctx.drawImage(tomatoPlant, tomX, tomY, tomWidth, tomHeight)
     }
-
     function drawScissor1 () {
         ctx.drawImage(scissor1, scissor1X, scissor1Y, scissor1Width, scissor1Height)
     }
-
     function drawScissor2 () {
         ctx.drawImage(scissor2, scissor2X, scissor2Y, scissor2Width, scissor2Height)
     }
-
     function drawScissor3 () {
         ctx.drawImage(scissor3, scissor3X, scissor3Y, scissor3Width, scissor3Height)
     }
-
     function drawScissor4 () {
         ctx.drawImage(scissor4, scissor4X, scissor4Y, scissor4Width, scissor4Height)
     }
@@ -224,10 +223,10 @@ window.addEventListener('load', ()=>{
         } else {scissor4X = 2400 }
     }
 
-    /* function score 
+    /* function scoreCount 
     setTimeout(() => {
         score++
-    })
+    }1000)
 
 
    */
