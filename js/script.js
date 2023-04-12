@@ -21,14 +21,12 @@ window.addEventListener('load', ()=>{
     //score
     let score = 0
 
-  
-
     //images
     const backgroundImage = new Image()
-    backgroundImage.src = './images/canvas-background-retocada.png'
+    backgroundImage.src = './images/canvas-background-good.png'
 
     const tomatoPlant = new Image()
-    tomatoPlant.src = './images/buena-recortada2.png'
+    tomatoPlant.src = './images/tomato-cutted-js.png'
 
     const scissor1 = new Image()
     scissor1.src = './images/scissor-recortada2.png'
