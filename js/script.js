@@ -21,6 +21,12 @@ window.addEventListener('load', ()=>{
     //score
     let score = 0
 
+    //music
+    const gameMusic = new Audio("/music/game-music.mp3")
+    const gameOverSound = new Audio("/music/game-over-sound.mp3")
+    const collisonSound = new Audio("/music/collision-sound.mp3")
+
+
     //images
     const backgroundImage = new Image()
     backgroundImage.src = './images/canvas-background-good.png'
@@ -75,7 +81,6 @@ window.addEventListener('load', ()=>{
     let scissor4Y = 700
     let scissor4Speed = 12
 
-
     //movement variables
     let moveUp = false
     let moveDown = false
@@ -83,13 +88,10 @@ window.addEventListener('load', ()=>{
     //requestAnimationFrame
     let forLaterCancel = null
 
-   
-
     //game over 
     let isGameOver = false 
 
-    
-    
+    let speed = 10 
 
     //class Scissors
     class Scissors {
@@ -108,6 +110,10 @@ window.addEventListener('load', ()=>{
 
         move() {
             this.x -= this.speed
+            if (this.x < -200 ) {
+                this.x = 2800;
+                this.y = Math.random()*(canvas.height)
+            } 
         }
         
         checkCollision(tomX, tomY, tomWidth, tomHeight) {
@@ -115,37 +121,40 @@ window.addEventListener('load', ()=>{
                 tomHeight + tomY > this.y &&
                 tomX < this.x + this.width &&
                 tomWidth + tomX > this.x) 
-            {isGameOver = true}
+            {isGameOver = true;
+            collisonSound.play()}
         }
+
+        
     }
 
     const scissors1 = new Scissors(
         2800,
         130,
-        15,
+        speed + 4,
     );
 
     const scissors2 = new Scissors(
         2800,
         300,
-        16,
+        speed + 6,
     );
 
     const scissors3 = new Scissors(
         2800,
         500,
-        13,
+        speed - 6,
     );
 
     const scissors4 = new Scissors(
         2800,
         700,
-        12,
+        speed - 4,
     );
-    let scissorsArr = [scissors1, scissors2, scissors3, scissors4]
     
- 
-   
+    
+    let scissorsArr = [scissors1, scissors2, scissors3, scissors4]
+      
    
     //check collision
     /* function checkCollision () {
@@ -170,7 +179,11 @@ window.addEventListener('load', ()=>{
         canvas.height = window.innerHeight;
         score = 0
         scoreCount()
-        moreSpeed()
+        setInterval(() => {
+            scissorsArr.forEach(scissors => {
+                scissors.speed += 1
+            })
+        } ,5000)
         anime();
     }
 
@@ -183,7 +196,6 @@ window.addEventListener('load', ()=>{
             console.log(scissors)
             scissors.move()
             scissors.checkCollision(tomX, tomY, tomWidth, tomHeight)
-            
         });
 
         /* drawScissor1() */
@@ -205,6 +217,10 @@ window.addEventListener('load', ()=>{
         }
     }
     
+    
+        
+        
+
     //all draws
      function drawTomatoPlant () {
         ctx.drawImage(tomatoPlant, tomX, tomY, tomWidth, tomHeight)
@@ -267,18 +283,13 @@ window.addEventListener('load', ()=>{
     } ,1000)
     }
 
-    function moreSpeed () {
-    setInterval(() => {
-        scissor1Speed += 1
-        scissor2Speed += 1
-        scissor3Speed += 1
-        scissor4Speed += 1
-    } ,5000)
-    }
+    
 
     //event listeners
     startButton.addEventListener('click', () => {
         startGame()
+        gameMusic.loop = true
+        gameMusic.play()
     })
 
     restartButton.addEventListener('click', () => {
@@ -288,7 +299,7 @@ window.addEventListener('load', ()=>{
         })
         gameOverSplash.style.display = 'none'
         startGame()
-        console.log("hola")
+        gameMusic.play()
     })
 
     document.addEventListener('keydown', (event) => {
@@ -315,6 +326,12 @@ window.addEventListener('load', ()=>{
         canvas.style.display = 'none'
         gameOverSplash.style.display = 'flex'
         document.querySelector('#your-score').innerText = `YOUR SCORE: ${score}`
+        setInterval(() => {
+            scissorsArr.forEach(scissors => {
+                scissors.speed = speed
+            })
+        } ,5000)
+        gameOverSound.play()
     }  
 })
         
