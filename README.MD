@@ -1,27 +1,27 @@
-Wild Tomato
+###Wild Tomato
 
 https://javiernicolasadan.github.io/wild-tomato/
 
-Description
+##Description
 
 "Wild Tomato" is a simple game where the player controls a tomato plant that must move up and down to avoid collisions with scissors that approach from the right border of the screen. The score increase over time, so the longer the player avoids collisions, the higher the score. 
 The game ends when the player collisions with a scissor.
 
 
-MVP (DOM-CANVAS)
+##MVP (DOM-CANVAS)
 -game have a tomato plant that goes up and down
 -scissors approach randomly from the right side of the screen
 -scissors´s velocity are changing over time
 -when the tomato plant and a scissor have a collision finish game
 
 
-Backlog
+##Backlog
 -style the score
 -Improve the positioning of the scissors so that they never overlap each other
 -the tomato plant can move right and left
 
 
-Data structure
+##Data structure
 script.js
 
 intro(){}
@@ -43,7 +43,7 @@ move(){}
 checkCollision(){}
 
 
-States y States Transitions
+##States y States Transitions
 The game have three diferents screens
 -intro game
 -game
@@ -51,7 +51,6 @@ The game have three diferents screens
 
 
 ## Links
-
 
 https://docs.google.com/presentation/d/1nREs8je2bm0_E-0w5KV6fV7_xyUqddLE1J488wsHn0U/edit?usp=sharing
 https://github.com/javiernicolasadan/wild-tomato
