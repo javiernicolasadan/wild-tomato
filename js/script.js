@@ -22,9 +22,9 @@ window.addEventListener('load', ()=>{
     let score = 0
 
     //music
-    const gameMusic = new Audio("/music/game-music.mp3")
-    const gameOverSound = new Audio("/music/game-over-sound.mp3")
-    const collisonSound = new Audio("/music/collision-sound.mp3")
+    const gameMusic = new Audio("./music/game-music.mp3")
+    const gameOverSound = new Audio("./music/game-over-sound.mp3")
+    const collisonSound = new Audio("./music/collision-sound.mp3")
 
 
     //images
