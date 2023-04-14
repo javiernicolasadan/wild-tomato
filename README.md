@@ -9,16 +9,16 @@ The game ends when the player collisions with a scissor.
 
 
 ## MVP (DOM-CANVAS)
--game have a tomato plant that goes up and down
--scissors approach randomly from the right side of the screen
--scissors´s velocity are changing over time
--when the tomato plant and a scissor have a collision finish game
+- game have a tomato plant that goes up and down
+- scissors approach randomly from the right side of the screen
+- scissors´s velocity are changing over time
+- when the tomato plant and a scissor have a collision finish game
 
 
 ## Backlog
--style the score
--Improve the positioning of the scissors so that they never overlap each other
--the tomato plant can move right and left
+- style the score
+- Improve the positioning of the scissors so that they never overlap each other
+- the tomato plant can move right and left
 
 
 ## Data structure
@@ -45,9 +45,9 @@ checkCollision(){}
 
 ## States y States Transitions
 The game have three diferents screens
--intro game
--game
--game over
+- intro game
+- game
+- game over
 
 
 ## Links
