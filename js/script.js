@@ -37,49 +37,11 @@ window.addEventListener('load', ()=>{
     const scissor1 = new Image()
     scissor1.src = './images/scissor-recortada2.png'
 
-    const scissor2 = new Image()
-    scissor2.src = './images/scissor-recortada2.png'
-
-    const scissor3 = new Image()
-    scissor3.src = './images/scissor-recortada2.png'
-
-    const scissor4 = new Image()
-    scissor4.src = './images/scissor-recortada2.png'
-
-
     //tomato plant variables
     const tomWidth = 100
     const tomHeight = 150
     let tomX = 0
     let tomY = canvas.height / 2
-
-    //scissor 1 variables
-    const scissor1Width = 100
-    const scissor1Height = 150
-    let scissor1X = 2800
-    let scissor1Y = 130
-    let scissor1Speed = 15
-
-    //scissor 2 variables
-    const scissor2Width = 100
-    const scissor2Height = 150
-    let scissor2X = 2800
-    let scissor2Y = 300
-    let scissor2Speed = 16
-
-    //scissor 3 variables
-    const scissor3Width = 100
-    const scissor3Height = 150
-    let scissor3X = 2800
-    let scissor3Y = 500
-    let scissor3Speed = 13
-
-    //scissor 4 variables
-    const scissor4Width = 100
-    const scissor4Height = 150
-    let scissor4X = 2800
-    let scissor4Y = 700
-    let scissor4Speed = 12
 
     //movement variables
     let moveUp = false
@@ -124,8 +86,6 @@ window.addEventListener('load', ()=>{
             {isGameOver = true;
             collisonSound.play()}
         }
-
-        
     }
 
     const scissors1 = new Scissors(
@@ -133,44 +93,24 @@ window.addEventListener('load', ()=>{
         130,
         speed + 4,
     );
-
     const scissors2 = new Scissors(
         2800,
         300,
         speed + 6,
     );
-
     const scissors3 = new Scissors(
         2800,
         500,
         speed - 6,
     );
-
     const scissors4 = new Scissors(
         2800,
         700,
         speed - 4,
     );
-    
-    
+        
     let scissorsArr = [scissors1, scissors2, scissors3, scissors4]
       
-   
-    //check collision
-    /* function checkCollision () {
-        if ((scissor1Y < tomY + tomHeight && scissor1Y + scissor1Height > tomY && 
-            scissor1X < tomX + tomWidth && scissor1X + scissor1Width > tomX) ||
-           (scissor2Y < tomY + tomHeight && scissor2Y + scissor2Height > tomY && 
-            scissor2X < tomX + tomWidth && scissor2X + scissor2Width > tomX) ||
-           (scissor3Y < tomY + tomHeight && scissor3Y + scissor3Height > tomY && 
-            scissor3X < tomX + tomWidth && scissor3X + scissor3Width > tomX) ||
-           (scissor4Y < tomY + tomHeight && scissor4Y + scissor4Height > tomY && 
-            scissor4X < tomX + tomWidth && scissor4X + scissor4Width > tomX)) {
-            isGameOver = true
-            console.log("collision")
-         }
-    }   */
-
     //logic and functions
     function startGame () {
         canvas.style.display = 'block'
@@ -198,15 +138,6 @@ window.addEventListener('load', ()=>{
             scissors.checkCollision(tomX, tomY, tomWidth, tomHeight)
         });
 
-        /* drawScissor1() */
-        /* scissor1Move() */
-        /* drawScissor2() */
-        /* scissor2Move() */
-        /* drawScissor3() */
-        /* scissor3Move() */
-        /* drawScissor4() */
-        /* scissor4Move() */
-        /* checkCollision() */
         drawScore()
         tomatoMove()
             if (isGameOver) {
@@ -217,27 +148,11 @@ window.addEventListener('load', ()=>{
         }
     }
     
-    
-        
-        
-
     //all draws
      function drawTomatoPlant () {
         ctx.drawImage(tomatoPlant, tomX, tomY, tomWidth, tomHeight)
     }
-    /*
-    function drawScissor1 () {
-        ctx.drawImage(scissor1, scissor1X, scissor1Y, scissor1Width, scissor1Height)
-    }
-    function drawScissor2 () {
-        ctx.drawImage(scissor2, scissor2X, scissor2Y, scissor2Width, scissor2Height)
-    }
-    function drawScissor3 () {
-        ctx.drawImage(scissor3, scissor3X, scissor3Y, scissor3Width, scissor3Height)
-    }
-    function drawScissor4 () {
-        ctx.drawImage(scissor4, scissor4X, scissor4Y, scissor4Width, scissor4Height)
-    } */
+    
     function drawScore () {
         ctx.beginPath()
         ctx.fillStyle ="black"
@@ -245,9 +160,7 @@ window.addEventListener('load', ()=>{
         ctx.font = "bold 80px serif"
         ctx.closePath()
     }
-   
-    
-
+  
     function tomatoMove () {
         if (moveUp && tomY > 0) {
             tomY -= 5;
@@ -256,34 +169,12 @@ window.addEventListener('load', ()=>{
             tomY += 5;
         }
     }
-    /* function scissor1Move () {
-        if (scissor1X > 0) {
-            scissor1X -= scissor1Speed;
-        } else {scissor1X = 2400 }
-    }
-    function scissor2Move () {
-        if (scissor2X > 0) {
-            scissor2X -= scissor2Speed;
-        } else {scissor2X = 2400 }
-    }
-    function scissor3Move () {
-        if (scissor3X > 0) {
-            scissor3X -= scissor3Speed;
-        } else {scissor3X = 2400 }
-    }
-    function scissor4Move () {
-        if (scissor4X > 0) {
-            scissor4X -= scissor4Speed;
-        } else {scissor4X = 2400 }
-    } */
-
+   
     function scoreCount  () {
     setInterval(() => {
         score++
     } ,1000)
     }
-
-    
 
     //event listeners
     startButton.addEventListener('click', () => {
