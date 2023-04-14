@@ -24,23 +24,23 @@ The game ends when the player collisions with a scissor.
 ## Data structure
 script.js
 
-intro(){}
-canvas(){}
-gameOverSplash(){}
+- intro(){}
+- canvas(){}
+- gameOverSplash(){}
 
-startGame(){}
-scoreCount(){}
-anime(){}
-drawTomatoPlant(){}
-drawScore(){}
-tomatoMove(){}
-scoreCount(){}
-gameOver(){}
+- startGame(){}
+- scoreCount(){}
+- anime(){}
+- drawTomatoPlant(){}
+- drawScore(){}
+- tomatoMove(){}
+- scoreCount(){}
+- gameOver(){}
 
-scissors() {this.x, this.y. this.speed}
-drawScissors(){}
-move(){}
-checkCollision(){}
+- scissors() {this.x, this.y. this.speed}
+- drawScissors(){}
+- move(){}
+- checkCollision(){}
 
 
 ## States y States Transitions
